@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{F054E8A7-0C02-4D8A-9A97-9C2715F7224B}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="NumerosFull.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\..\NumerosAuxi\Numero\1\NumerosAuxi.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="NumerosFull">
+        <MSBuild Projects="NumerosFull.dproj"/>
+    </Target>
+    <Target Name="NumerosFull:Clean">
+        <MSBuild Projects="NumerosFull.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NumerosFull:Make">
+        <MSBuild Projects="NumerosFull.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="NumerosAuxi">
+        <MSBuild Projects="..\..\NumerosAuxi\Numero\1\NumerosAuxi.dproj"/>
+    </Target>
+    <Target Name="NumerosAuxi:Clean">
+        <MSBuild Projects="..\..\NumerosAuxi\Numero\1\NumerosAuxi.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NumerosAuxi:Make">
+        <MSBuild Projects="..\..\NumerosAuxi\Numero\1\NumerosAuxi.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="NumerosFull;NumerosAuxi"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="NumerosFull:Clean;NumerosAuxi:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="NumerosFull:Make;NumerosAuxi:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

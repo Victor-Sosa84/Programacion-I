@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{8C421A05-7619-4325-A92E-85A6FA0F56D5}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Archivos.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="E:\ideas del juego\Game\Sokobam.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Archivos">
+        <MSBuild Projects="Archivos.dproj"/>
+    </Target>
+    <Target Name="Archivos:Clean">
+        <MSBuild Projects="Archivos.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Archivos:Make">
+        <MSBuild Projects="Archivos.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Sokobam">
+        <MSBuild Projects="E:\ideas del juego\Game\Sokobam.dproj"/>
+    </Target>
+    <Target Name="Sokobam:Clean">
+        <MSBuild Projects="E:\ideas del juego\Game\Sokobam.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Sokobam:Make">
+        <MSBuild Projects="E:\ideas del juego\Game\Sokobam.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Archivos;Sokobam"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Archivos:Clean;Sokobam:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Archivos:Make;Sokobam:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

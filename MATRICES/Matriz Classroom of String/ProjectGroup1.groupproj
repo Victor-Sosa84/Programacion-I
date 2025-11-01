@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{5F6883F1-0E36-407F-930F-FEC94748F84E}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="MatrizClassroomString.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="C:\Users\Usuario\OneDrive\Escritorio\COPIA\RAD Prog1\Matriz\Matriz.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="MatrizClassroomString">
+        <MSBuild Projects="MatrizClassroomString.dproj"/>
+    </Target>
+    <Target Name="MatrizClassroomString:Clean">
+        <MSBuild Projects="MatrizClassroomString.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MatrizClassroomString:Make">
+        <MSBuild Projects="MatrizClassroomString.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Matriz">
+        <MSBuild Projects="C:\Users\Usuario\OneDrive\Escritorio\COPIA\RAD Prog1\Matriz\Matriz.dproj"/>
+    </Target>
+    <Target Name="Matriz:Clean">
+        <MSBuild Projects="C:\Users\Usuario\OneDrive\Escritorio\COPIA\RAD Prog1\Matriz\Matriz.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Matriz:Make">
+        <MSBuild Projects="C:\Users\Usuario\OneDrive\Escritorio\COPIA\RAD Prog1\Matriz\Matriz.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="MatrizClassroomString;Matriz"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="MatrizClassroomString:Clean;Matriz:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="MatrizClassroomString:Make;Matriz:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

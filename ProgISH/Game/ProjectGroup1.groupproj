@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{F4B907A8-D703-47A4-8233-C141469ED765}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Sokobam.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="E:\RAD Prog1\Sokoban\Sokoban.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Sokobam">
+        <MSBuild Projects="Sokobam.dproj"/>
+    </Target>
+    <Target Name="Sokobam:Clean">
+        <MSBuild Projects="Sokobam.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Sokobam:Make">
+        <MSBuild Projects="Sokobam.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Sokoban">
+        <MSBuild Projects="E:\RAD Prog1\Sokoban\Sokoban.dproj"/>
+    </Target>
+    <Target Name="Sokoban:Clean">
+        <MSBuild Projects="E:\RAD Prog1\Sokoban\Sokoban.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Sokoban:Make">
+        <MSBuild Projects="E:\RAD Prog1\Sokoban\Sokoban.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Sokobam;Sokoban"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Sokobam:Clean;Sokoban:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Sokobam:Make;Sokoban:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

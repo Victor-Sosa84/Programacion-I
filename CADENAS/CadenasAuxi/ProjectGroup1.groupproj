@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{9FB904C3-03B6-409B-B715-B6F8DDCC5394}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="CadenasAuxi.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\..\CadenasFull\CadenasFull.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="CadenasAuxi">
+        <MSBuild Projects="CadenasAuxi.dproj"/>
+    </Target>
+    <Target Name="CadenasAuxi:Clean">
+        <MSBuild Projects="CadenasAuxi.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CadenasAuxi:Make">
+        <MSBuild Projects="CadenasAuxi.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="CadenasFull">
+        <MSBuild Projects="..\..\CadenasFull\CadenasFull.dproj"/>
+    </Target>
+    <Target Name="CadenasFull:Clean">
+        <MSBuild Projects="..\..\CadenasFull\CadenasFull.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CadenasFull:Make">
+        <MSBuild Projects="..\..\CadenasFull\CadenasFull.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="CadenasAuxi;CadenasFull"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="CadenasAuxi:Clean;CadenasFull:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="CadenasAuxi:Make;CadenasFull:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{B0500651-1037-4344-A30A-9CE59FEF41F0}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Sokoban.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\PRUEBASSOKOBANANANANA\PruebasSokoban.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Sokoban">
+        <MSBuild Projects="Sokoban.dproj"/>
+    </Target>
+    <Target Name="Sokoban:Clean">
+        <MSBuild Projects="Sokoban.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Sokoban:Make">
+        <MSBuild Projects="Sokoban.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="PruebasSokoban">
+        <MSBuild Projects="..\PRUEBASSOKOBANANANANA\PruebasSokoban.dproj"/>
+    </Target>
+    <Target Name="PruebasSokoban:Clean">
+        <MSBuild Projects="..\PRUEBASSOKOBANANANANA\PruebasSokoban.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PruebasSokoban:Make">
+        <MSBuild Projects="..\PRUEBASSOKOBANANANANA\PruebasSokoban.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Sokoban;PruebasSokoban"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Sokoban:Clean;PruebasSokoban:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Sokoban:Make;PruebasSokoban:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

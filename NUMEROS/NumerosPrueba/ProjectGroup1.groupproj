@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{F44238ED-9CBA-49A9-AB38-C28B43B2C15A}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="NumerosPrueba.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\..\Numeros\Numeros\Numeros.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="NumerosPrueba">
+        <MSBuild Projects="NumerosPrueba.dproj"/>
+    </Target>
+    <Target Name="NumerosPrueba:Clean">
+        <MSBuild Projects="NumerosPrueba.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NumerosPrueba:Make">
+        <MSBuild Projects="NumerosPrueba.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Numeros">
+        <MSBuild Projects="..\..\Numeros\Numeros\Numeros.dproj"/>
+    </Target>
+    <Target Name="Numeros:Clean">
+        <MSBuild Projects="..\..\Numeros\Numeros\Numeros.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Numeros:Make">
+        <MSBuild Projects="..\..\Numeros\Numeros\Numeros.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="NumerosPrueba;Numeros"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="NumerosPrueba:Clean;Numeros:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="NumerosPrueba:Make;Numeros:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
